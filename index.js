@@ -5,6 +5,8 @@ const Recipe = require("./models/Recipe.model");
 // Import of the data from './data.json'
 const data = require("./data");
 
+mongoose.set("useFindAndModify", false);
+
 const MONGODB_URI = "mongodb://localhost:27017/recipe-app";
 
 // Connection to the database "recipe-app"
@@ -27,26 +29,50 @@ mongoose
   });
 
 //Iteration 2
-// const cake = {
-//   // iteration 1
-//   title: "apple pie",
-//   level: "Easy Peasy",
-//   ingredients: "apple",
-//   cuisine: "cuisine",
-//   dishType: "dessert",
-//   duration: 15,
-//   creator: "sarah & nina",
-// };
-// Recipe.create(cake)
-//   .then((cake) => console.log("The recipe title is saved and its value is: ", cake.title))
-//   .catch((error) => console.log("An error happened while saving a new user:", error));
+const cake = {
+  // iteration 1
+  title: "apple pie",
+  level: "Easy Peasy",
+  ingredients: "apple",
+  cuisine: "cuisine",
+  dishType: "dessert",
+  duration: 15,
+  creator: "sarah & nina",
+};
+Recipe.create(cake)
+  .then((cake) =>
+    console.log("The recipe title is saved and its value is: ", cake.title)
+  )
+  .catch((error) =>
+    console.log("An error happened while saving a new user:", error)
+  );
 
 //Iteration 3
 Recipe.insertMany(data)
   .then((docs) => {
     for (let i = 0; i < docs.length; i++) {
       //boucle pour afficher chaque titre de chaque el dans l'array docs
-      console.log("title :", docs[i].title);
+      console.log("title :", docs[i].title, docs[i].duration);
     }
   })
-  .catch((err) => console.log("An error happened while saving a new user:", err));
+  .catch((err) =>
+    console.log("An error happened while saving a new user:", err)
+  );
+
+// Iteration 4
+Recipe.findOneAndUpdate({
+      title: "Rigatoni alla Genovese"
+    }, {
+      duration: 100
+    },
+    false
+  )
+  .then(() => console.log("Update ok"))
+  .catch(() => console.log("Error"))
+
+// Iteration 5
+Recipe.deleteOne({
+    name: 'Carrot Cake'
+  })
+  .then(() => console.log('Delete ok'))
+  .catch(() => console.log('Error delete'))
