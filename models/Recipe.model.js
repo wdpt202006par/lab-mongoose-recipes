@@ -5,27 +5,28 @@ const recipeSchema = new Schema({
   // TODO: write the schema
   title: String,
   level: {
-    type: String, 
-    enum: ['Easy Peasy', 'Amateur Chef','UltraPro Chef']},
+    type: String,
+    enum: ['Easy Peasy', 'Amateur Chef', 'UltraPro Chef']
+  },
   ingredients: [String],
-  cuisine: String, 
+  cuisine: String,
   dishType: {
-    type: String, 
-    enum: ['breakfast', 'main_course', 'soup', 'snack', 'drink', 'dessert','other']
+    type: String,
+    enum: ['breakfast', 'main_course', 'soup', 'snack', 'drink', 'dessert', 'other']
   },
   image: {
-    type: String, 
+    type: String,
     default: "https://images.media-allrecipes.com/images/75131.jpg"
   },
   duration: {
     type: Number,
-    min: O,
+    min: 0,
   },
   creator: {
-    type: String, 
+    type: String,
   },
   created: {
-    type: Date, 
+    type: Date,
     default: Date.now,
   }
 
