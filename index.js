@@ -7,6 +7,8 @@ const data = require('./data');
 
 const MONGODB_URI = 'mongodb://localhost:27017/recipe-app';
 
+
+
 // Connection to the database "recipe-app"
 mongoose
   .connect(MONGODB_URI, {
@@ -22,26 +24,46 @@ mongoose
   .then(() => {
     // Run your code here, after you have insured that the connection was made
 
-
+    // iteration 2
     Recipe.create({
-        title: 'Crepes',
-        level: 'Easy Peasy',
-        ingredients: ['lait', 'oeufs', 'farine', 'sucre vanillé', 'rhum', 'pincée de sel'],
-        cuisine: 'traditionnelle',
-        dishType: 'breakfast',
-        // image: ,
-        duration: 15,
-        creator: 'Enine & Cassandre',
-        // created: ,
+      title: 'Crepes',
+      level: 'Easy Peasy',
+      ingredients: ['lait', 'oeufs', 'farine', 'sucre vanillé', 'rhum', 'pincée de sel'],
+      cuisine: 'traditionnelle',
+      dishType: 'breakfast',
+      // image: ,
+      duration: 15,
+      creator: 'Enine & Cassandre',
+      // created: ,
     })
-    .then(function() { console.log(title) })
-    .catch(function (err) { console.log('oops',err) })
-
-    Recipe.save()
-    .then(recipe => console.log('The recipe was created'))
-    .catch(error => console.log('An error occurred', error));
+    .then(function(recipe) {
+      //
+      console.log(recipe.title)
+    })
+    .catch(function (err) {
+      console.log('oops',err)
+    })
 
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+
+  //ITERATION 3
+var dataRecipes = require("./data.json")
+
+  Recipe.insertMany(dataRecipes)
+  .then(function(recipes) {
+    //boucle sur le tab de recipes
+    for(let i = 0; i<recipes.length; i++){
+      console.log(recipes[i].title)
+    }
+    
+  })
+  .catch(function (err) {
+    console.log('oops',err)
+  })
+
+
+ 
