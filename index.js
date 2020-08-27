@@ -21,14 +21,14 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
-    createRecipe();
-    insertData();
+    // createRecipe();
+    insertData(data);
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
 
-createRecipe = () => {
+const createRecipe = () => {
   return Recipe.create({
     title: 'Sushi',
     level: 'UltraPro Chef',
@@ -43,10 +43,10 @@ createRecipe = () => {
   }).catch((error) => {console.error('Error connecting to the database', error);})
 }
 
-insertData = (data) => {
+const insertData = (data) => {
   return Recipe.insertMany(data).then ((recipes)=> {
     recipes.forEach(recipe => {
       console.log(recipe.title)
     });
-  }).catch((error) => {console.error('Error connecting to the database', error);})
+  }).catch((error) => {console.error('Error connecting to data.json', error);})
 } 
