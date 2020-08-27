@@ -14,18 +14,21 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(self => {
-    console.log(`Connected to the database: "${self.connection.name}"`);
-    // Before adding any documents to the database, let's delete all previous entries
-    return self.connection.dropDatabase();
-  })
+  // .then(self => {
+  //   console.log(`Connected to the database: "${self.connection.name}"`);
+  //   // Before adding any documents to the database, let's delete all previous entries
+  //   return self.connection.dropDatabase();
+  // })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
     // createRecipe();
-    insertData(data);
+    // insertData(data);
+    Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100}).then((recipe)=> {
+      console.log(`YOU ARE AWSOME ${recipe.title}`)
+  }).catch((error) => {console.error('Error connecting to the database', error);})
   })
   .catch(error => {
-    console.error('Error connecting to the database', error);
+    console.error('Error Update Duration', error);
   });
 
 const createRecipe = () => {
