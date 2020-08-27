@@ -21,6 +21,26 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+
+
+    Recipe.create({
+        title: 'Crepes',
+        level: 'Easy Peasy',
+        ingredients: ['lait', 'oeufs', 'farine', 'sucre vanillé', 'rhum', 'pincée de sel'],
+        cuisine: 'traditionnelle',
+        dishType: 'breakfast',
+        // image: ,
+        duration: 15,
+        creator: 'Enine & Cassandre',
+        // created: ,
+    })
+    .then(function() { console.log(title) })
+    .catch(function (err) { console.log('oops',err) })
+
+    Recipe.save()
+    .then(recipe => console.log('The recipe was created'))
+    .catch(error => console.log('An error occurred', error));
+
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
