@@ -25,3 +25,17 @@ mongoose
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+// const cake = {
+//   // iteration 1
+//   title: 'apple pie',
+//   level: "Easy Peasy",
+//   ingredients: 'apple',
+//   cuisine: 'cuisine',
+//   dishType: 'dessert',
+//   duration: 15,
+//   creator: 'sarah & nina',
+// }
+// Recipe.create(data)
+//   .then(cake => console.log('The recipe title is saved and its value is: ', cake.title))
+//   .catch(error => console.log('An error happened while saving a new user:', error));
