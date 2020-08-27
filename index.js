@@ -23,13 +23,23 @@ mongoose
     // Run your code here, after you have insured that the connection was made
     // createRecipe();
     // insertData(data);
-    Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100}).then((recipe)=> {
-      console.log(`YOU ARE AWSOME ${recipe.title}`)
-  }).catch((error) => {console.error('Error connecting to the database', error);})
-  })
-  .catch(error => {
-    console.error('Error Update Duration', error);
-  });
+    //   Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100}).then((recipe)=> {
+    //     console.log(`YOU ARE AWSOME ${recipe.title}`)
+    // }).catch((error) => {console.error('Error connecting to the database', error);})
+    // })
+
+    Recipe.deleteOne({title: "Carrot Cake"}).then((recipe)=> {
+      console.log(`Collection Deleted Succssefully `);
+      mongoose.connection.close();
+    }).catch((error) => {console.error('Error connecting to the database', error);})
+    })
+    .catch(error => {
+      console.error('Error delete collection', error);
+    })
+    .catch(error => {
+        console.error('Error connecting to the database', error);
+      });
+
 
 const createRecipe = () => {
   return Recipe.create({
