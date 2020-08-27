@@ -20,8 +20,98 @@ mongoose
     return self.connection.dropDatabase();
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
+    Recipe.create(
+      {
+      title: "IronBurger",
+      level: "Amateur Chef",
+      ingredients: [
+        "bread",
+        "bacon",
+        "cheese",
+        "onion",
+        "salt",
+        "meat"
+      ],
+      cuisine: "fastfood",
+      dishType: "main_course",
+      image: "https://images.media-allrecipes.com/images/75131.jpg",
+      duration: 5,
+      creator: "Ironhack"}
+    ).then(function (recipe) {
+      console.log('Ok');
+    }).catch(function (err) {
+      console.log('Not good');
+    });
+  
+    Recipe.insertMany(data)
+      .then(function (recipes) {
+        recipes.forEach(function (recipe) {
+          console.log(`Title: ${recipe.title}`);
+        })
+      }).catch(function (err) {
+        console.log(err);
+      });
+  
+      Recipe.updateOne({title: 'Rigatoni alla Genovese'}, {duration: 100})
+      .then(function (recipe) { 
+        console.log(`Rigatoni updated : ${recipe}`);
+      }).catch(function (err) {
+        console.log(err);
+      });
+  
+      Recipe.deleteOne({title: 'Carrot Cake'})
+      .then(function (recipe) { 
+        console.log(`deleted : ${recipe}`);
+      }).catch(function (err) {
+        console.log(err);
+      });
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+  // Recipe.create(
+  //   {
+  //   title: "IronBurger",
+  //   level: "Amateur Chef",
+  //   ingredients: [
+  //     "bread",
+  //     "bacon",
+  //     "cheese",
+  //     "onion",
+  //     "salt",
+  //     "meat"
+  //   ],
+  //   cuisine: "fastfood",
+  //   dishType: "main_course",
+  //   image: "https://images.media-allrecipes.com/images/75131.jpg",
+  //   duration: 5,
+  //   creator: "Ironhack"}
+  // ).then(function (recipe) {
+  //   console.log('Ok');
+  // }).catch(function (err) {
+  //   console.log('Not good');
+  // });
+
+  // Recipe.insertMany(data)
+  //   .then(function (recipes) {
+  //     recipes.forEach(function (recipe) {
+  //       console.log(`Title: ${recipe.title}`);
+  //     })
+  //   }).catch(function (err) {
+  //     console.log(err);
+  //   });
+
+  //   Recipe.updateOne({title: 'Rigatoni alla Genovese'}, {duration: 100})
+  //   .then(function (recipe) { 
+  //     console.log(`Rigatoni updated : ${recipe}`);
+  //   }).catch(function (err) {
+  //     console.log(err);
+  //   });
+
+  //   Recipe.deleteOne({title: 'Carrot Cake'})
+  //   .then(function (recipe) { 
+  //     console.log(`deleted : ${recipe}`);
+  //   }).catch(function (err) {
+  //     console.log(err);
+  //   });
