@@ -25,3 +25,21 @@ mongoose
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+  Recipe.create(
+    {
+    title: "IronBurger",
+    level: "Amateur Chef",
+    ingredients: [
+      "bread",
+      "bacon",
+      "cheese",
+      "onion",
+      "salt"
+    ],
+    cuisine: "fastfood",
+    dishType: "main_course",
+    image: "https://images.media-allrecipes.com/images/75131.jpg",
+    duration: 5,
+    creator: "Ironhack"}
+  )
