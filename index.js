@@ -20,8 +20,55 @@ mongoose
     return self.connection.dropDatabase();
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
+		//Run your code here, after you have insured that the connection was made
+		createRecipe();
+		createManyRecipes();
+		updateRecipe();
+		deletRecipe()
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+const newRecipe = {
+	title: "Pizza Margarita",
+	level : "Amateur Chef",
+	ingredients: ['Cheese', 'Tomato', 'Flour'],
+	cuisine: "Italian"
+}
+
+const createRecipe = () => {
+	Recipe.create(newRecipe).then(() => {
+		console.log(newRecipe.title);
+	}).catch((err) => {
+		console.log(err);
+	});
+}
+
+const createManyRecipes = () => {
+	Recipe.insertMany(data).then(() => {
+		data.forEach(() => {
+			console.log(newRecipe.title);
+		})
+	}).catch((err) => {
+		console.log(err);
+	})
+}
+
+const updateRecipe = () => {
+	Recipe.updateOne({title: 'Rigatoni alla Genovese'}, { duration: 100 })
+	.then(() => {console.log ("updated")})
+	.catch((err) => {console.log(err)
+	})
+}
+
+const deletRecipe = () => {
+	Recipe.deleteOne({title: 'Carrot Cake'})
+	.then(() => {console.log("deleted")})
+	.catch((err) => {console.log(err)
+	})
+}
+
+
+
+
