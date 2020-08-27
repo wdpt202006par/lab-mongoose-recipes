@@ -25,3 +25,24 @@ mongoose
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+  const modelA = new Recipe(
+    {title:'Tarte aux pommes',
+    level: 'Easy Peasy',
+    ingredients: ['pate','compote', 'pommes granny', 'sucre'],
+    cuisine: 'Francaise',
+    dishType:'dessert',
+    duration: 45,
+    creator: 'Marine,Thomas',
+    created:''
+  })
+
+  modelA.save()
+  .then(function(recipe) {
+    console.log (recipe.title)
+  })
+  .catch (function(err) {
+    console.log('oops',err)
+  })
+
+
