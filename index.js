@@ -35,11 +35,32 @@ mongoose
       "bacon",
       "cheese",
       "onion",
-      "salt"
+      "salt",
+      "meat"
     ],
     cuisine: "fastfood",
     dishType: "main_course",
     image: "https://images.media-allrecipes.com/images/75131.jpg",
     duration: 5,
     creator: "Ironhack"}
-  )
+  ).then(function (recipe) {
+    console.log('Ok');
+  }).catch(function (err) {
+    console.log('Not good');
+  });
+
+  Recipe.insertMany(data)
+    .then(function (recipes) {
+      recipes.forEach(function (recipe) {
+        console.log(`Title: ${recipe.title}`);
+      })
+    }).catch(function (err) {
+      console.log(err);
+    });
+
+    Recipe.updateOne({title: 'Rigatoni alla Genovese'}, {duration: 100})
+    .then(function (recipe) { 
+      console.log(`Rigatoni updated : ${recipe.title}`);
+    }).catch(function (err) {
+      console.log(err);
+    });
