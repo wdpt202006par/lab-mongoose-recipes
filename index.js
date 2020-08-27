@@ -19,39 +19,51 @@ mongoose
     // Before adding any documents to the database, let's delete all previous entries
     return self.connection.dropDatabase();
   })
+
   .then(() => {
-    Recipe.create({
-        "title": "Asian Glazed Chicken Thighs",
-        "level": "Amateur Chef",
-        "ingredients": [
-          "1/2 cup rice vinegar",
-          "5 tablespoons honey",
-          "1/3 cup soy sauce (such as Silver Swan®)",
-          "1/4 cup Asian (toasted) sesame oil",
-          "3 tablespoons Asian chili garlic sauce",
-          "3 tablespoons minced garlic",
-          "salt to taste",
-          "8 skinless, boneless chicken thighs"
-        ],
-        "cuisine": "Asian",
-        "dishType": "main_course",
-        "image": "https://images.media-allrecipes.com/userphotos/720x405/815964.jpg",
-        "duration": 40,
-        "creator": "Chef LePapu"
-      })
-      .then(() => {
-        Recipe.find({})
-          .then(function (recipe) { // ATTENTION : renvoi un tableau (array)
-            console.log("Title: ", recipe[0].title);
-          })
-          .catch(function (error) {
-            console.log("no title found", error);
-          })
-      })
-      .catch(error => {
-        console.log('pas cool', error);
-      })
+  Recipe.insertMany(data)
+})
+  .then(()=> {
+  console.log(Recipe.find({}, "title"))
+})
+  .catch(error => {
+    console.log('no titles displayed', error)
   })
+  
+  // TO CHECK 
+  //   Recipe.create({
+  //       "title": "Asian Glazed Chicken Thighs",
+  //       "level": "Amateur Chef",
+  //       "ingredients": [
+  //         "1/2 cup rice vinegar",
+  //         "5 tablespoons honey",
+  //         "1/3 cup soy sauce (such as Silver Swan®)",
+  //         "1/4 cup Asian (toasted) sesame oil",
+  //         "3 tablespoons Asian chili garlic sauce",
+  //         "3 tablespoons minced garlic",
+  //         "salt to taste",
+  //         "8 skinless, boneless chicken thighs"
+  //       ],
+  //       "cuisine": "Asian",
+  //       "dishType": "main_course",
+  //       "image": "https://images.media-allrecipes.com/userphotos/720x405/815964.jpg",
+  //       "duration": 40,
+  //       "creator": "Chef LePapu"
+  //     })
+  //     .then(() => {
+  //       Recipe.find({})
+  //         .then(function (recipe) { // ATTENTION : renvoi un tableau (array)
+  //           console.log("Title: ", recipe[0].title);
+  //         })
+  //         .catch(function (error) {
+  //           console.log("no title found", error);
+  //         })
+  //     })
+  //     .catch(error => {
+  //       console.log('pas cool', error);
+  //     })
+  // })
+  
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
