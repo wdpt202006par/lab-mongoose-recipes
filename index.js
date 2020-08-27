@@ -20,8 +20,35 @@ mongoose
     return self.connection.dropDatabase();
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
+		// Run your code here, after you have insured that the connection was made
+		//createRecipe();
+		// createManyRecipes();
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+const newRecipe = {
+	title: "Pizza Margarita",
+	level : "Amateur Chef",
+	ingredients: ['Cheese', 'Tomato', 'Flour'],
+	cuisine: "Italian"
+}
+
+const createRecipe = () => {
+	Recipe.create(newRecipe).then(() => {
+		console.log(newRecipe.title);
+	}).catch((err) => {
+		console.log(err);
+	});
+}
+
+const createManyRecipes = () => {
+	Recipe.insertMany(data).then(() => {
+		data.forEach(() => {
+			console.log(newRecipe.title);
+		})
+	}).catch((err) => {
+		console.log(err);
+	})
+}
