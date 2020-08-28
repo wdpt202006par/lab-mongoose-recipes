@@ -65,5 +65,167 @@ var dataRecipes = require("./data.json")
     console.log('oops',err)
   })
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // //ITERATION 4
 
+  // Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
+  // .then(function (msg) {
+  //   console.log('Duration of Rigatoni alla Genovese updated!',msg)
+  // })
+  // .catch(function (err) {
+  //   console.log('oops', err)
+  // })
+
+  // //ITERATION 5
+
+  // Recipe.deleteOne({title: "Carrot Cake"})
+  // .then(function (msg) {
+  //   console.log('The Carrot Cake recipe have been deleted!', msg)
+  // })
+  // .catch(function (err) {
+  //   console.log('oops', err)
+  // })
  
