@@ -25,7 +25,7 @@ mongoose
 
 
 
-//insertManyRecipe();
+//insertManyRecipe;
 var json = require('./data.json')
 Recipe.insertMany(json)
   .then(function(recipes) {
@@ -35,7 +35,8 @@ Recipe.insertMany(json)
     console.log('ooops', err)
   });
 
-  //createRecipe();
+
+  //createRecipe;
 
   //function createRecipe () {
     //return Recipe.create({
@@ -56,10 +57,11 @@ Recipe.insertMany(json)
       //image: "https://images.media-allrecipes.com/userphotos/720x405/815964.jpg",
       //duration: 40 ,
     //creator: "Chef LePapu"
-  //}).then(title => console.log('The title of this recipe is: ', title))
+  //}).then(recipe => console.log('The title of this recipe is: ', recipe.title))
     //.catch(error => console.log('Ooops', error));
   //}
   
+
 
 
 
