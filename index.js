@@ -52,8 +52,8 @@ Recipe.insertMany(data)
   .catch((err) => console.log("An error happened while saving a new user:", err));
 
 // Iteration 4
-mongoose.set("returnOriginal", false); //cf. doc Mongoose
-//mongoose.set("useFindAndModify", false);
+//mongoose.set("returnOriginal", false); //cf. doc Mongoose
+mongoose.set("useFindAndModify", false);
 
 Recipe.findOneAndUpdate(
   {
