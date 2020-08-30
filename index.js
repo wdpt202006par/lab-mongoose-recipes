@@ -45,4 +45,16 @@ mongoose
     console.log('oops',err)
   })
 
+  var allrecipes = data;
+
+  recipe-app.insertMany(allrecipes)
+  .then(function (recipe) {
+    console.log(recipe.title)
+  })
+  .catch(function (err){
+    console.log("oops not all recipes",err)
+  });
+ 
+
+
 
