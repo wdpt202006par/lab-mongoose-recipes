@@ -22,13 +22,16 @@ mongoose
   .then(() => {
     //ITERATIONS GO THERE
     Recipe.insertMany(data)
-    .then(() => {
-    Recipe.findOneAndUpdate({title: 'Rigatoni alla Genovese'}, {duration: 100}, function() {
-      console.log("update ok");
-    })})
-    .catch((error) => {
-      console.error("Error", error);
-    })
+      .then(() => {
+        Recipe.deleteOne({
+          title: "Carrot Cake"
+        }, function () {
+          console.log('Remove done');
+        })
+      })
+      .catch((error) => {
+        console.error("Error", error);
+      })
   })
   //ITERATIONS STOP THERE
   .catch((error) => {
@@ -83,4 +86,21 @@ mongoose
 //           console.error("Error .find()", error);
 //         })
 //     })
+// })
+
+// ITERATION 4 
+
+// Recipe.insertMany(data)
+//   .then(() => {
+//     Recipe.findOneAndUpdate({
+//       title: 'Rigatoni alla Genovese'
+//     }, {
+//       duration: 100
+//     }, function () {
+//       console.log("update ok");
+//     })
+//   })
+//   .catch((error) => {
+//     console.error("Error", error);
+//   })
 // })
