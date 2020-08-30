@@ -20,24 +20,23 @@ mongoose
     return self.connection.dropDatabase();
   })
   .then(() => {
+    //ITERATIONS GO THERE
     Recipe.insertMany(data)
-      .then(() => {
-        Recipe.find({})
-          .then((recipes) => {
-            recipes.forEach(el => {
-              console.log(el.title);
-            })
-          })
-          .catch((error) => {
-            console.error("Error .find()", error);
-          })
-      })
+    .then(() => {
+    Recipe.findOneAndUpdate({title: 'Rigatoni alla Genovese'}, {duration: 100}, function() {
+      console.log("update ok");
+    })})
+    .catch((error) => {
+      console.error("Error", error);
+    })
   })
+  //ITERATIONS STOP THERE
   .catch((error) => {
     console.error("Error connecting to the database", error);
   });
 
-// TO CHECK
+// ITERATION 2
+//
 //   Recipe.create({
 //       "title": "Asian Glazed Chicken Thighs",
 //       "level": "Amateur Chef",
@@ -68,5 +67,20 @@ mongoose
 //     })
 //     .catch(error => {
 //       console.log('pas cool', error);
+//     })
+// })
+
+// ITERATION 3
+//   Recipe.insertMany(data)
+//     .then(() => {
+//       Recipe.find({})
+//         .then((recipes) => {
+//           recipes.forEach(el => {
+//             console.log(el.title);
+//           })
+//         })
+//         .catch((error) => {
+//           console.error("Error .find()", error);
+//         })
 //     })
 // })
